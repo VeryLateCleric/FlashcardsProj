@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import CreateCard from "../Components/Buttons/CreateCard"; 
+import CreateCardButton from "../Components/Buttons/CreateCardButton"; 
 import LoadingMessage from "../Components/LoadingMessage";
 import DeckListItem from "./DeckListItem";
 
@@ -20,7 +20,7 @@ function DeckList({ decks, setDecks }) {
   //If deckList exists with non-zero length, render. Else show LoadingMessage
   return deckList?.length ? (
     <>
-      <CreateCard />
+      <CreateCardButton />
       <div className="list-group">{deckList}</div>
     </>
   ) : (

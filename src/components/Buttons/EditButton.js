@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function EditCardButton({ path }) {
+function EditButton({ path }) {
   return (
     <>
       <Link className="mr-3" to={`${path}/edit`}>
@@ -18,4 +18,4 @@ function EditCardButton({ path }) {
   );
 }
 
-export default EditCardButton;
+export default EditButton;
