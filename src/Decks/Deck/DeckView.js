@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useMatch } from "react-router-dom";
-import AddCardButton from "../../Components/Buttons/AddCardButton";
+import CreateCardButton from "../../Components/Buttons/CreateCardButton";
 import DeleteButton from "../../Components/Buttons/DeleteButton";
 import EditButton from "../../Components/Buttons/EditButton";
 import StudyButton from "../../Components/Buttons/StudyButton";
@@ -29,7 +29,7 @@ function DeckView({ deck, setDecks }) {
         <div>
           <EditButton path={url} />
           <StudyButton path={url} />
-          <AddCardButton />
+          <CreateCardButton />
         </div>
         <div>
           <DeleteButton objToDelete={deck} objType="deck" setDecks={setDecks} />

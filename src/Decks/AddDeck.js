@@ -2,7 +2,7 @@ import React from "react";
 import Breadcrumb from "../Components/Breadcrumb";
 import FormTemplate from "../Components/Forms/FormTemplate";
 
-function NewDeck({ decks, setDecks }) {
+function AddDeck({ decks, setDecks }) {
   return (
     <>
       <Breadcrumb navTitles={["Create Deck"]} />
@@ -17,4 +17,4 @@ function NewDeck({ decks, setDecks }) {
   );
 }
 
-export default NewDeck;
+export default AddDeck;

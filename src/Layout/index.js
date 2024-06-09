@@ -31,10 +31,9 @@ function Layout() {
       <div className="container">
         <Routes>
           <Route path="/" element={<Home decks={decks} setDecks={setDecks} />} />
-          <Route path="/decks/" element={<Decks decks={decks} setDecks={setDecks}/>} />
+          <Route path="/decks/*" element={<Decks decks={decks} setDecks={setDecks} />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
-        {/* TODO: Implement the screen starting here */}
       </div>
     </>
   );

@@ -23,7 +23,7 @@ function FormTemplate({
   const { deckId } = useParams();
 
   //deckView is a match to valid URL path. Check if match is defined and has pnB property. Else default to empty string
-  const deckViewURL = match?.pathnameBase || ("");
+  const deckViewURL = match?.pathnameBase || "";
 
   //If component is given deckName as prop then add as deckName
   const deckHeading = deckName ? `${deckName}: ` : null;
