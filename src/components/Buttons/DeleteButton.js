@@ -17,7 +17,7 @@ function DeleteButton({ objToDelete, objType, setDecks }) {
         objType === "deck"
           ? deleteDeck(objToDelete.id) //deleteDeck if it's a Deck
               .then(() => updateDecks(controller))
-              .then(() => navigate.push(""))
+              .then(() => navigate("/"))
           : deleteCard(objToDelete.id) //deleteCard if it's a Card
               .then(() => updateDecks(controller));
       }
@@ -25,7 +25,7 @@ function DeleteButton({ objToDelete, objType, setDecks }) {
       return () => controller.abort(); //cleanup
     }
     //if we cancel, then go home without deleting
-    else navigate.push("");
+    else navigate("/");
   }
 
   function updateDecks({ signal }) {

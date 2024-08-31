@@ -1,10 +1,10 @@
 import React from "react";
-import { Link, useMatch } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 //Home, Link, Title props to pass to link
 function Breadcrumb({ navTitles }) {
-    const { url } = useMatch();
-    const crumbs = url ? url.split("/") : [];
+    const location = useLocation();
+    const crumbs = location.pathname ? location.pathname.split("/") : [];
 
     const navItems = navTitles
         ? navTitles.map((title, index) => {
@@ -16,7 +16,7 @@ function Breadcrumb({ navTitles }) {
                 </li>
             );
 
-            const crumb = crumbs.slice(0, 3).join("/");
+            const crumb = crumbs.slice(0, index + 1).join("/");
             return (
             <li key={index} className="breadcrumb-item">
                 <Link to={crumb}>{title}</Link>

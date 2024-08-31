@@ -23,7 +23,7 @@ function Layout() {
     }
     loadDecks();
     return () => controller.abort();
-  })
+  }, []);
 
   return (
     <>

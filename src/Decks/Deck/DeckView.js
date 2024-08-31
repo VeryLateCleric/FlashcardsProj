@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useMatch } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import CreateCardButton from "../../Components/Buttons/CreateCardButton";
 import DeleteButton from "../../Components/Buttons/DeleteButton";
 import EditButton from "../../Components/Buttons/EditButton";
@@ -9,8 +9,8 @@ import LoadingMessage from "../../Components/LoadingMessage";
 import CardList from "./CardList";
 
 function DeckView({ deck, setDecks }) {
-  const { url } = useMatch(); //Grab the url for the for each button's path
-
+  const location = useLocation(); //Grab the url for the for each button's path
+  const currentPath = location.pathname;
   const [cards, setCards] = useState([]);
 
   //Update cards array whenever there is a change to it's parent component's deck object
@@ -27,8 +27,8 @@ function DeckView({ deck, setDecks }) {
 
       <div className="row justify-content-between mb-5 px-3">
         <div>
-          <EditButton path={url} />
-          <StudyButton path={url} />
+          <EditButton path={currentPath} />
+          <StudyButton path={currentPath} />
           <CreateCardButton />
         </div>
         <div>

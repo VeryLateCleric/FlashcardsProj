@@ -1,10 +1,12 @@
 import React from "react";
-import { useMatch } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import DeleteButton from "../../Components/Buttons/DeleteButton";
 import EditButton from "../../Components/Buttons/EditButton";
 
 function CardListItem({ card, setDecks }) {
-  const { url } = useMatch();
+  const location = useLocation();
+  const currentPath = location.pathname;
+
   return (
     <div className="list-group-item">
       <div className="row">
@@ -19,7 +21,7 @@ function CardListItem({ card, setDecks }) {
       </div>
 
       <div className="row justify-content-end">
-        <EditButton path={`${url}/cards/${card.id}`} />
+        <EditButton path={`${currentPath}/cards/${card.id}`} />
         <DeleteButton objToDelete={card} objType="card" setDecks={setDecks} />
       </div>
     </div>
