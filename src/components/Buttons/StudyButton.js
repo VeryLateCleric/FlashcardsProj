@@ -12,7 +12,7 @@ function StudyButton({ path }) {
             title="book"
             aria-hidden="true"
           ></span>
-          Study
+          Study Cards
         </button>
       </Link>
     </>

@@ -21,7 +21,7 @@ function NewCard({ deck, setDecks }) {
 
     // Create a new card
     const newCard = {
-      id: setDecks.card.length + 1, //
+      id: deck.cards.length + 1, // simple way to number the cards for now
       front,
       back,
     };

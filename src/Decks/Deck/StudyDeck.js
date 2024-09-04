@@ -1,8 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
-import { readDeck } from "../../utils/api";
-import StudyCard from "./StudyCard"
+import StudyCard from "./StudyCard";
 
-function StudyDeck() {}
+function StudyDeck({ deck }) {
+  return (
+    <div>
+      <h1 className="blockquote">Study: {deck.name}</h1>
+      <StudyCard cards={deck.cards} />
+    </div>
+  );
+}
 
 export default StudyDeck;
