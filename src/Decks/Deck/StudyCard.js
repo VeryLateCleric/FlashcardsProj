@@ -31,7 +31,7 @@ function StudyCard({ cards, isFlipped, onFlip }) {
     }
   };
 
-  return (
+  return !cards ? "Loading" : (
     <div className="card">
       <div className="card-body">
         <h5 className="card-title">
