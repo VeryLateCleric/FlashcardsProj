@@ -28,7 +28,7 @@ function NewCard({ deck, setDecks }) {
       };
       await createCard(deck.id, newCard, controller.signal);
       await updateDecks(controller);
-      navigate("/");
+      navigate(`/decks/${deck.id}`);
     }
     makeNewCard();
     return () => controller.abort();

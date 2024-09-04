@@ -25,9 +25,9 @@ function AddDeck({ setDecks }) {
         name,
         description,
       };
-      await createDeck(newDeck, controller.signal);
+      const { id } = await createDeck(newDeck, controller.signal);
       await updateDecks(controller);
-      navigate("/");
+      navigate(`/decks/${id}`);
     }
     makeNewDeck();
     return () => controller.abort();
