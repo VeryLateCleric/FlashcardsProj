@@ -1,9 +1,12 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { createDeck, listDecks } from "../utils/api";
 import Breadcrumb from "../Components/Breadcrumb";
 
-function AddDeck({ decks, setDecks }) {
+function AddDeck({ setDecks }) {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
+  const navigate = useNavigate();
 
   const handleNameChange = (event) => {
     setName(event.target.value);
@@ -15,18 +18,28 @@ function AddDeck({ decks, setDecks }) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const newDeck = {
-      id: decks.length + 1,
-      name,
-      description,
-      cards: [],
-    };
-    setDecks([...decks, newDeck]);
+    const controller = new AbortController();
 
-    // Reset form
-    setName("");
-    setDescription("");
+    async function makeNewDeck() {
+      const newDeck = {
+        name,
+        description,
+      };
+      await createDeck(newDeck, controller.signal);
+      await updateDecks(controller);
+      navigate("/");
+    }
+    makeNewDeck();
+    return () => controller.abort();
   };
+
+  function updateDecks({ signal }) {
+    listDecks(signal)
+      .then(setDecks)
+      .catch((error) => {
+        if (error.name !== "AbortError") throw error;
+      });
+  }
 
   return (
     <>

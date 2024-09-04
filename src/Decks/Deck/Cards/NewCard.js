@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Breadcrumb from "../../../Components/Breadcrumb";
 import LoadingMessage from "../../../Components/LoadingMessage";
+import { createCard, listDecks } from "../../../utils/api";
 
 function NewCard({ deck, setDecks }) {
   const navigate = useNavigate();
@@ -18,29 +19,39 @@ function NewCard({ deck, setDecks }) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    const controller = new AbortController();
 
-    // Create a new card
-    const newCard = {
-      id: deck.cards.length + 1, // simple way to number the cards for now
-      front,
-      back,
-    };
-
-    // Add the new card to the deck
-    const updatedDeck = {
-      ...deck,
-      cards: [...deck.cards, newCard],
-    };
-
-    // Update the state with the modified deck
-    setDecks((prevDecks) =>
-      prevDecks.map((d) => (d.id === updatedDeck.id ? updatedDeck : d))
-    );
-
-    // Redirect to the deck view or another relevant page
-    navigate(`/decks/${deck.id}`);
+    async function makeNewCard() {
+      const newCard = {
+        front,
+        back
+      };
+      await createCard(deck.id, newCard, controller.signal);
+      await updateDecks(controller);
+      navigate("/");
+    }
+    makeNewCard();
+    return () => controller.abort();
   };
 
+  function updateDecks({ signal }) {
+    listDecks(signal)
+      .then(setDecks)
+      .catch((error) => {
+        if (error.name !== "AbortError") throw error;
+      });
+  }
+
+
+  // // Create a new card (deckId, card, signal)
+  // async function addCard(deckId, card, signal) {
+  // const newCard = {
+  //   deckId,
+  //   front,
+  //   back
+  // };
+  // await createCard();
+  
   return deck ? (
     <>
       <Breadcrumb navTitles={[deck.name, "New Card"]} />

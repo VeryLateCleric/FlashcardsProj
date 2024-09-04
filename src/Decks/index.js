@@ -8,7 +8,7 @@ function Decks({ decks, setDecks }) {
   return (
     <>
       <Routes>
-        <Route path={"new"} element={<AddDeck decks={decks} setDecks={setDecks} />} />
+        <Route path={"new"} element={<AddDeck setDecks={setDecks} />} />
         <Route path={":deckId/*"} element={<Deck decks={decks} setDecks={setDecks} />} />
         <Route path="*" element={<h1>Not a valid URL!</h1>} />
       </Routes>
