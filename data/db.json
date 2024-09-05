@@ -14,11 +14,6 @@
       "name": "Chmon",
       "description": "buddy",
       "id": 3
-    },
-    {
-      "name": "SHOMBUUBA PRIME",
-      "description": "YOU THOUGHT",
-      "id": 4
     }
   ],
   "cards": [
@@ -63,12 +58,6 @@
       "back": "CURSE OF SHOMBUUBA",
       "deckId": 1,
       "id": 7
-    },
-    {
-      "front": "ya muttha",
-      "back": "ya brotha",
-      "deckId": 4,
-      "id": 8
     }
   ]
 }

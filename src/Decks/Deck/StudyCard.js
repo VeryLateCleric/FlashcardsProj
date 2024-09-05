@@ -15,7 +15,7 @@ function StudyCard({ cards, isFlipped, onFlip }) {
     const cardIndex = cards.indexOf(card);
     // set card index to control cyling through all cards
     if (cardIndex < cards.length - 1) {
-      setFlipped(false); //Show front on start
+      setFlipped(false); // Show front on start
       setCard(cards[cardIndex + 1]);
     } else {
       if (
@@ -31,7 +31,7 @@ function StudyCard({ cards, isFlipped, onFlip }) {
     }
   };
 
-  return !cards ? "Loading" : (
+  return (
     <div className="card">
       <div className="card-body">
         <h5 className="card-title">
@@ -42,10 +42,7 @@ function StudyCard({ cards, isFlipped, onFlip }) {
           Flip over
         </button>
         {flipped ? (
-          <button
-            className="btn btn-primary"
-            onClick={nextHandler}
-          >
+          <button className="btn btn-primary" onClick={nextHandler}>
             Next
           </button>
         ) : null}

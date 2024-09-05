@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import CardListItem from "./CardListItem";
 
-//useState variable to store array of CardListItem components
+//useState variable to store array of CardList components
 function CardList({ cards, setDecks }) {
   const [cardList, setCardList] = useState([]);
 
