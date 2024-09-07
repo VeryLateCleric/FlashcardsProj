@@ -54,7 +54,7 @@ function NewCard({ deck, setDecks }) {
   
   return deck ? (
     <>
-      <Breadcrumb navTitles={[deck.name, "New Card"]} />
+      <Breadcrumb navTitles={[deck.name, "Add Card"]} />
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="front">Front</label>

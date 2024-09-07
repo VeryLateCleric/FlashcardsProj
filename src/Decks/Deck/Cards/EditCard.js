@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import Breadcrumb from "../../../Components/Breadcrumb";
 import LoadingMessage from "../../../Components/LoadingMessage";
 import { eventWrapper } from "@testing-library/user-event/dist/utils";
+import { updateCard } from "../../../utils/api";
 
 function EditCard({ deck, setDecks }) {
   const { cardId } = useParams();
@@ -14,12 +15,12 @@ function EditCard({ deck, setDecks }) {
   const [back, setBack] = useState(card?.back || "");
 
   const handleFrontChange = (event) => {
-    setFront(event.target.value)
-  }
+    setFront(event.target.value);
+  };
 
   const handleBackChange = (event) => {
-    setBack(event.target.value)
-  }
+    setBack(event.target.value);
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -27,13 +28,19 @@ function EditCard({ deck, setDecks }) {
     const updatedCard = { ...card, front, back };
 
     //Update state with modified deck
-    setDecks((prevDecks) =>
-      prevDecks.map((deck) => (deck.id === updatedCard.deckId ? updatedCard : card))
-    );
+    updateCard(updatedCard).then(() => {
+      setDecks((prevDecks) =>
+        prevDecks.map((deck) =>
+          deck.id === updatedCard.deckId ? updatedCard : card
+        )
+      )
+    })
+    .then(() => {
+      // Redirect to deck view
+      navigate(`/decks/${deck.id}`);
+    })
 
-    // Redirect to deck view
-    navigate(`/decks/${deck.id}`);
-  }
+  };
 
   return card ? (
     <>
