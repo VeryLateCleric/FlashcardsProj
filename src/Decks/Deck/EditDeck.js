@@ -22,6 +22,7 @@ function EditDeck({ deck, setDecks }) {
     setDecks((prevDecks) =>
       prevDecks.map((d) => (d.id === updatedDeck.id ? updatedDeck : d))
     );
+    
   };
 
   return deck?.id ? (

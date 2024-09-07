@@ -25,14 +25,10 @@ function EditCard({ deck, setDecks }) {
     event.preventDefault();
 
     const updatedCard = { ...card, front, back };
-    const updatedDeck = {
-      ...deck,
-      cards: deck.cards.map((card) => (card.id === updatedCard.id ? updatedCard : card))
-    };
 
     //Update state with modified deck
     setDecks((prevDecks) =>
-      prevDecks.map((deck) => (deck.id === updatedDeck.id ? updatedDeck : deck))
+      prevDecks.map((deck) => (deck.id === updatedCard.deckId ? updatedCard : card))
     );
 
     // Redirect to deck view

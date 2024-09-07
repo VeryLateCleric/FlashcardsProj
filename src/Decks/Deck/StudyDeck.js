@@ -21,7 +21,6 @@ function StudyDeck() {
         });
     }
 
-    console.log(deck, cards);
     if (!cards) {
       loadDeck();
     }
@@ -33,16 +32,15 @@ function StudyDeck() {
     return <p>Loading...</p>;
   }
 
-  // Case for too few cards, handled by NotEnoughCards
-  if (cards.length < 3) {
-    return <NotEnoughCards cards={cards} />;
-  }
-
   return (
     <>
       <Breadcrumb navTitles={[deck.name || "Unknown Deck", "Study"]} />
-      <h5>Study : {deck.name}</h5>
-      <StudyCard cards={deck.cards} />
+      <h1 className="h1">Study : {deck.name}</h1>
+      {cards.length < 3 ? (
+        <NotEnoughCards cards={cards} />
+      ) : (
+        <StudyCard cards={deck.cards} />
+      )}
     </>
   );
 }

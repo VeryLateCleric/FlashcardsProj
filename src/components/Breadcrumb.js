@@ -15,8 +15,10 @@ function Breadcrumb({ navTitles }) {
                 {title}
                 </li>
             );
-
+            // We will cut the crumb out that we need, taking out the last navTitle
+            // to return us to our previous url address
             const crumb = crumbs.slice(0, index + 3).join("/");
+            
             return (
             <li key={index} className="breadcrumb-item">
                 <Link to={crumb}>{title}</Link>
