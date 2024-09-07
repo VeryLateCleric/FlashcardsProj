@@ -28,7 +28,7 @@ function DeckView({ deck, setDecks }) {
       <div className="row justify-content-between mb-5 px-3">
         <div>
           <EditButton path={currentPath} />
-          <StudyButton path={currentPath} />
+          <StudyButton path={currentPath} deck={deck} />
           <CreateCardButton />
         </div>
         <div>

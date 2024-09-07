@@ -16,7 +16,7 @@ function Breadcrumb({ navTitles }) {
                 </li>
             );
 
-            const crumb = crumbs.slice(0, index + 1).join("/");
+            const crumb = crumbs.slice(0, index + 3).join("/");
             return (
             <li key={index} className="breadcrumb-item">
                 <Link to={crumb}>{title}</Link>

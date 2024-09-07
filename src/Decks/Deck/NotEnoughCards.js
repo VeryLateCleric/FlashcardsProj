@@ -6,12 +6,15 @@ function NotEnoughCards({ cards }) {
   const location = useLocation();
   const currentPath = location.pathname;
 
+  // if (!cards) {
+  //   cards = [];
+  // }
   return (
     <>
       <h2 className="h2">Not enough cards.</h2>
       <p className="tg-text-light">
-        You need at least 3 cards to study. There are only {cards.length} cards in
-        your deck. Please add more cards and try again.
+        You need at least 3 cards to study. There are only {cards.length} cards
+        in your deck. Please add more cards and try again.
       </p>
       <CreateCardButton path={currentPath} />
     </>

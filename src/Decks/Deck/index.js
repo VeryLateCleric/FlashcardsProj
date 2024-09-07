@@ -9,7 +9,7 @@ import { readDeck } from "../../utils/api";
 function Deck({ decks, setDecks }) {
     const { deckId } = useParams();
   
-    const [deck, setDeck] = useState([]);
+    const [deck, setDeck] = useState({});
   
     // Used to load current deck from our API
     useEffect(() => {
@@ -29,7 +29,7 @@ function Deck({ decks, setDecks }) {
   
     return (
       <Routes>
-        <Route path="study" element={<StudyDeck deck={deck} />} />
+        <Route path="study" element={<StudyDeck />} />
         <Route path="edit" element={<EditDeck deck={deck} setDecks={setDecks} />} />
         <Route path="cards/*" element={<Cards deck={deck} setDecks={setDecks} />} />
         <Route path="/" element={<DeckView deck={deck} setDecks={setDecks} />} />

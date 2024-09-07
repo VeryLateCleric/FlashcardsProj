@@ -4,7 +4,7 @@ import { readDeck } from "../../utils/api";
 import NotEnoughCards from "./NotEnoughCards";
 import Breadcrumb from "../../Components/Breadcrumb";
 
-function StudyCard({ cards, isFlipped, onFlip }) {
+function StudyCard({ cards }) {
   const [flipped, setFlipped] = useState(false);
   const [card, setCard] = useState(cards[0]);
   const navigate = useNavigate();
@@ -33,21 +33,23 @@ function StudyCard({ cards, isFlipped, onFlip }) {
 
   return (
     <div className="card">
-      <div className="card-body">
-        <h5 className="card-title">
-          Card {card.id} of {cards.length}
-        </h5>
-        <p className="card-text">{flipped ? card.back : card.front}</p>
-        <button onClick={flipHandler} className="btn btn-secondary">
-          Flip over
-        </button>
-        {flipped ? (
-          <button className="btn btn-primary" onClick={nextHandler}>
-            Next
+        <div className="card-body">
+          <h5 className="card-title">
+            Card {cards.indexOf(card) + 1} of {cards.length}
+          </h5>
+          <p className="card-text">
+            {flipped ? card.back : card.front}
+          </p>
+          <button onClick={flipHandler} className="btn btn-secondary">
+            Flip
           </button>
-        ) : null}
+          {flipped && (
+            <button className="btn btn-primary" onClick={nextHandler}>
+              Next
+            </button>
+          )}
+        </div>
       </div>
-    </div>
   );
 }
 
