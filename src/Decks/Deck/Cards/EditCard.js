@@ -1,56 +1,69 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import Breadcrumb from "../../../Components/Breadcrumb";
 import LoadingMessage from "../../../Components/LoadingMessage";
 import { eventWrapper } from "@testing-library/user-event/dist/utils";
-import { updateCard } from "../../../utils/api";
+import { listDecks, readCard, updateCard } from "../../../utils/api";
 
 function EditCard({ deck, setDecks }) {
   const { cardId } = useParams();
   const navigate = useNavigate();
-  const card = deck?.cards?.find((card) => card.id === Number(cardId));
+  // const card = deck?.cards?.find((card) => card.id === Number(cardId));
 
   // Set the initial state with details of existing cards
-  const [front, setFront] = useState(card?.front || "");
-  const [back, setBack] = useState(card?.back || "");
+  // const [front, setFront] = useState(card?.front || "");
+  // const [back, setBack] = useState(card?.back || "");
+  const [card, setCard] = useState({})
+  console.log("card", card)
+  useEffect(() => {
+    // fetch card
+    readCard(cardId)
+      .then(setCard)
+  }, [cardId])
 
   const handleFrontChange = (event) => {
-    setFront(event.target.value);
+    // setFront(event.target.value);
+    setCard({...card, front: event.target.value})
   };
 
   const handleBackChange = (event) => {
-    setBack(event.target.value);
+    setCard({...card, back: event.target.value})
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    const controller = new AbortController();
 
-    const updatedCard = { ...card, front, back };
+    const updatedCard = { ...card };
 
     //Update state with modified deck
-    updateCard(updatedCard).then(() => {
-      setDecks((prevDecks) =>
-        prevDecks.map((deck) =>
-          deck.id === updatedCard.deckId ? updatedCard : card
-        )
-      )
-    })
-    .then(() => {
-      // Redirect to deck view
-      navigate(`/decks/${deck.id}`);
-    })
-
+    updateCard(updatedCard, controller.signal)
+      .then(() => {
+        listDecks(controller.signal)
+          .then(setDecks)
+          .catch((error) => {
+            if (error.name !== "AbortError") throw error;
+          });
+      })
+      .then(() => {
+        // Redirect to deck view
+        navigate(`/decks/${deck.id}`);
+      })
+      .catch((error) => {
+        if (error.name !== "AbortError") throw error;
+      });
   };
 
   return card ? (
     <>
       <Breadcrumb navTitles={[deck.name, `Edit Card ${card.id}`]} />
+      <h1 className="h1">Edit card</h1>
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="front">Front</label>
           <textarea
             id="front"
-            value={front}
+            value={card.front}
             onChange={handleFrontChange}
             required
           />
@@ -59,7 +72,7 @@ function EditCard({ deck, setDecks }) {
           <label htmlFor="back">Back</label>
           <textarea
             id="back"
-            value={back}
+            value={card.back}
             onChange={handleBackChange}
             required
           />

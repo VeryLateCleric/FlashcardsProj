@@ -38,6 +38,7 @@ function EditDeck({ deck, setDecks }) {
   return deck?.id ? (
     <>
       <Breadcrumb navTitles={[deck.name, "Edit Deck"]} />
+      <h1 className="h1">Edit deck</h1>
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="name">Deck Name</label>

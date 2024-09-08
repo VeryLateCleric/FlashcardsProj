@@ -12,11 +12,11 @@ function CardListItem({ card, setDecks }) {
       <div className="row">
         <div className="col">
           <h4 className="h4">Front</h4>
-          <p className="">{card.front}</p>
+          <p className="p">{card.front}</p>
         </div>
         <div className="col">
           <h4 className="h4">Back</h4>
-          <p className="">{card.back}</p>
+          <p className="p">{card.back}</p>
         </div>
       </div>
 

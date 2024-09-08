@@ -11,14 +11,8 @@ import CardList from "./CardList";
 function DeckView({ deck, setDecks }) {
   const location = useLocation(); //Grab the url for the for each button's path
   const currentPath = location.pathname;
-  const [cards, setCards] = useState([]);
 
-  //Update cards array whenever there is a change to it's parent component's deck object
-  useEffect(() => {
-    setCards(deck?.cards);
-  }, [deck]);
-
-  return deck?.name && cards ? (
+  return deck?.name ? (
     <>
       <Breadcrumb navTitles={[deck.name]} />
 
@@ -38,7 +32,7 @@ function DeckView({ deck, setDecks }) {
 
       <h2 className="h2">Cards</h2>
 
-      <CardList cards={cards} setDecks={setDecks} />
+      <CardList cards={deck?.cards} setDecks={setDecks} />
     </>
   ) : (
     <LoadingMessage />
