@@ -1,6 +1,10 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { Routes, Route } from "react-router-dom";
 import Header from "./Header";
 import NotFound from "./NotFound";
+import { listDecks } from "../utils/api"
+import Home from "../Home"
+import Decks from "../Decks";
 
 function Layout() {
   // useState of decks as variable array for each of the decks
@@ -22,13 +26,16 @@ function Layout() {
   }, []);
 
   return (
-    <Router>
+    <>
       <Header />
       <div className="container">
-        {/* TODO: Implement the screen starting here */}
-        <NotFound />
+        <Routes>
+          <Route path="/" element={<Home decks={decks} setDecks={setDecks} />} />
+          <Route path="/decks/*" element={<Decks decks={decks} setDecks={setDecks} />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
       </div>
-    </Router>
+    </>
   );
 }
 
