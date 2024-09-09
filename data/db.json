@@ -9,6 +9,11 @@
       "name": "React Router",
       "description": "React Router is a collection of navigational components that compose declaratively with your application.",
       "id": 2
+    },
+    {
+      "name": "asdfasdfasdfasdf",
+      "description": "asdfasdf",
+      "id": 3
     }
   ],
   "cards": [
@@ -38,16 +43,27 @@
     },
     {
       "front": "What does <Switch> do?",
-      "back": "Renders the first matching child <Route> ",
+      "back": "Renders the first matching child <Route> \n*Also Switch has been deprecated for a year now at least",
       "deckId": 2,
       "id": 5
     },
     {
-      "cards": [],
-      "front": "b",
-      "back": "b",
+      "front": "Shombuuba V",
+      "back": "CURSE OF SHOMBUUBA",
       "deckId": 1,
       "id": 7
+    },
+    {
+      "front": "One more card",
+      "back": "wachow",
+      "deckId": 2,
+      "id": 10
+    },
+    {
+      "front": "hjklasdfjkl;asdfkljhasfdjkl;",
+      "back": "asdfasdf",
+      "deckId": 3,
+      "id": 11
     }
   ]
 }

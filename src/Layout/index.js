@@ -1,29 +1,41 @@
-import React from "react";
-import { Router, Routes, Route } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Routes, Route } from "react-router-dom";
 import Header from "./Header";
 import NotFound from "./NotFound";
-import CreateCard from "../components/CreateCard";
-import DeckList from "../components/DeckList";
-import DeckView from "../components/DeckView";
-import EditCard from "../components/EditCard";
+import { listDecks } from "../utils/api"
+import Home from "../Home"
+import Decks from "../Decks";
 
 function Layout() {
+  // useState of decks as variable array for each of the decks
+  const [decks, setDecks] = useState([]);
+
+  // Load list of all decks from API
+  useEffect(() => {
+    const controller = new AbortController();
+
+    async function loadDecks() {
+      listDecks(controller.signal)
+        .then(setDecks)
+        .catch((error) => {
+        if (error.name !== "AbortError") throw error;
+      })
+    }
+    loadDecks();
+    return () => controller.abort();
+  }, []);
+
   return (
-    <Router>
+    <>
       <Header />
       <div className="container">
         <Routes>
-          <Route path="/" Component={DeckList} />
-          <Route path="/decks/:deckId" Component={DeckView} />
-          <Route path="/decks/:deckId/edit" Component={EditCard} />
-          <Route path="/decks/:deckId/cards/new" Component={CreateCard} />
-          <Route Component={NotFound} />
+          <Route path="/" element={<Home decks={decks} setDecks={setDecks} />} />
+          <Route path="/decks/*" element={<Decks decks={decks} setDecks={setDecks} />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
-        {/* TODO: Implement the screen starting here STATUS: STARTED
-        Added Routes and Route for new components from insturctions*/}
-        <NotFound />
       </div>
-    </Router>
+    </>
   );
 }
 
