@@ -6,6 +6,9 @@ function NotEnoughCards({ cards }) {
   const location = useLocation();
   const currentPath = location.pathname;
 
+  // if (!cards) {
+  //   cards = [];
+  // }
   return (
     <>
       <h2 className="h2">Not enough cards.</h2>
