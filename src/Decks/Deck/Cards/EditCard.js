@@ -2,19 +2,13 @@ import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import Breadcrumb from "../../../Components/Breadcrumb";
 import LoadingMessage from "../../../Components/LoadingMessage";
-import { eventWrapper } from "@testing-library/user-event/dist/utils";
 import { listDecks, readCard, updateCard } from "../../../utils/api";
 
 function EditCard({ deck, setDecks }) {
   const { cardId } = useParams();
   const navigate = useNavigate();
-  // const card = deck?.cards?.find((card) => card.id === Number(cardId));
 
-  // Set the initial state with details of existing cards
-  // const [front, setFront] = useState(card?.front || "");
-  // const [back, setBack] = useState(card?.back || "");
   const [card, setCard] = useState({})
-  console.log("card", card)
   useEffect(() => {
     // fetch card
     readCard(cardId)
@@ -22,7 +16,7 @@ function EditCard({ deck, setDecks }) {
   }, [cardId])
 
   const handleFrontChange = (event) => {
-    // setFront(event.target.value);
+    
     setCard({...card, front: event.target.value})
   };
 

@@ -42,16 +42,6 @@ function NewCard({ deck, setDecks }) {
       });
   }
 
-
-  // // Create a new card (deckId, card, signal)
-  // async function addCard(deckId, card, signal) {
-  // const newCard = {
-  //   deckId,
-  //   front,
-  //   back
-  // };
-  // await createCard();
-  
   return deck ? (
     <>
       <Breadcrumb navTitles={[deck.name, "Add Card"]} />
