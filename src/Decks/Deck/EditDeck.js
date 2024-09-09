@@ -45,7 +45,7 @@ function EditDeck({ deck, setDecks }) {
           <input
             id="name"
             type="text"
-            value={name}
+            value={deck.name}
             onChange={handleNameChange}
             required
           />
@@ -54,7 +54,7 @@ function EditDeck({ deck, setDecks }) {
           <label htmlFor="description">Description</label>
           <textarea
             id="description"
-            value={description}
+            value={deck.description}
             onChange={handleDescriptionChange}
             required
           />
