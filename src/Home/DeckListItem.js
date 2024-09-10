@@ -1,7 +1,7 @@
 import React from "react";
-import DeleteButton from "../chompponents/Buttons/DeleteButton";
-import StudyButton from "../chompponents/Buttons/StudyButton";
-import ViewDeckButton from "../chompponents/Buttons/ViewDeckButton";
+import DeleteButton from "../Components/Buttons/DeleteButton";
+import StudyButton from "../Components/Buttons/StudyButton";
+import ViewDeckButton from "../Components/Buttons/ViewDeckButton";
 
 function DeckListItem({ deck, setDecks }) {
   return (

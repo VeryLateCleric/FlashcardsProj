@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { createDeck, listDecks } from "../utils/api";
-import Breadcrumb from "../chompponents/Breadcrumb";
+import Breadcrumb from "../Components/Breadcrumb";
 
 function AddDeck({ setDecks }) {
   const [name, setName] = useState("");

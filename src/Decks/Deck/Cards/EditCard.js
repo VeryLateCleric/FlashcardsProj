@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import Breadcrumb from "../../../chompponents/Breadcrumb";
-import LoadingMessage from "../../../chompponents/LoadingMessage";
+import Breadcrumb from "../../../Components/Breadcrumb";
+import LoadingMessage from "../../../Components/LoadingMessage";
 import { eventWrapper } from "@testing-library/user-event/dist/utils";
 import { listDecks, readCard, updateCard } from "../../../utils/api";
 

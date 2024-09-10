@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import Breadcrumb from "../../chompponents/Breadcrumb";
-import LoadingMessage from "../../chompponents/LoadingMessage";
+import Breadcrumb from "../../Components/Breadcrumb";
+import LoadingMessage from "../../Components/LoadingMessage";
 import { updateDeck } from "../../utils/api";
 import { useNavigate } from "react-router-dom";
 
