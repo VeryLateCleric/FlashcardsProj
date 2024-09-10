@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import CreateCardButton from "../../chompponents/Buttons/CreateCardButton";
-import DeleteButton from "../../chompponents/Buttons/DeleteButton";
-import EditButton from "../../chompponents/Buttons/EditButton";
-import StudyButton from "../../chompponents/Buttons/StudyButton";
-import Breadcrumb from "../../chompponents/Breadcrumb";
-import LoadingMessage from "../../chompponents/LoadingMessage";
+import CreateCardButton from "../../Components/Buttons/CreateCardButton";
+import DeleteButton from "../../Components/Buttons/DeleteButton";
+import EditButton from "../../Components/Buttons/EditButton";
+import StudyButton from "../../Components/Buttons/StudyButton";
+import Breadcrumb from "../../Components/Breadcrumb";
+import LoadingMessage from "../../Components/LoadingMessage";
 import CardList from "./CardList";
 
 function DeckView({ deck, setDecks }) {

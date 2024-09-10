@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { readDeck } from "../../utils/api";
 import NotEnoughCards from "./NotEnoughCards";
-import Breadcrumb from "../../chompponents/Breadcrumb";
+import Breadcrumb from "../../Components/Breadcrumb";
 
 function StudyCard({ cards }) {
   const [flipped, setFlipped] = useState(false);

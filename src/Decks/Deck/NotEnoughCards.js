@@ -1,6 +1,6 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
-import CreateCardButton from "../../chompponents/Buttons/CreateCardButton";
+import CreateCardButton from "../../Components/Buttons/CreateCardButton";
 
 function NotEnoughCards({ cards }) {
   const location = useLocation();

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Breadcrumb from "../../../chompponents/Breadcrumb";
-import LoadingMessage from "../../../chompponents/LoadingMessage";
+import Breadcrumb from "../../../Components/Breadcrumb";
+import LoadingMessage from "../../../Components/LoadingMessage";
 import { createCard, listDecks } from "../../../utils/api";
 
 function NewCard({ deck, setDecks }) {
