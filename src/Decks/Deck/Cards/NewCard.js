@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Breadcrumb from "../../../Components/Breadcrumb";
-import LoadingMessage from "../../../Components/LoadingMessage";
+import Breadcrumb from "../../../chompponents/Breadcrumb";
+import LoadingMessage from "../../../chompponents/LoadingMessage";
 import { createCard, listDecks } from "../../../utils/api";
 
 function NewCard({ deck, setDecks }) {
@@ -24,7 +24,7 @@ function NewCard({ deck, setDecks }) {
     async function makeNewCard() {
       const newCard = {
         front,
-        back
+        back,
       };
       await createCard(deck.id, newCard, controller.signal);
       await updateDecks(controller);
@@ -42,7 +42,6 @@ function NewCard({ deck, setDecks }) {
       });
   }
 
-
   // // Create a new card (deckId, card, signal)
   // async function addCard(deckId, card, signal) {
   // const newCard = {
@@ -51,7 +50,7 @@ function NewCard({ deck, setDecks }) {
   //   back
   // };
   // await createCard();
-  
+
   return deck ? (
     <>
       <Breadcrumb navTitles={[deck.name, "Add Card"]} />
@@ -81,5 +80,5 @@ function NewCard({ deck, setDecks }) {
     <LoadingMessage />
   );
 }
-  
-  export default NewCard;
+
+export default NewCard;

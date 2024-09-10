@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import Breadcrumb from "../../../Components/Breadcrumb";
-import LoadingMessage from "../../../Components/LoadingMessage";
+import Breadcrumb from "../../../chompponents/Breadcrumb";
+import LoadingMessage from "../../../chompponents/LoadingMessage";
 import { eventWrapper } from "@testing-library/user-event/dist/utils";
 import { listDecks, readCard, updateCard } from "../../../utils/api";
 
@@ -13,21 +13,20 @@ function EditCard({ deck, setDecks }) {
   // Set the initial state with details of existing cards
   // const [front, setFront] = useState(card?.front || "");
   // const [back, setBack] = useState(card?.back || "");
-  const [card, setCard] = useState({})
-  console.log("card", card)
+  const [card, setCard] = useState({});
+  console.log("card", card);
   useEffect(() => {
     // fetch card
-    readCard(cardId)
-      .then(setCard)
-  }, [cardId])
+    readCard(cardId).then(setCard);
+  }, [cardId]);
 
   const handleFrontChange = (event) => {
     // setFront(event.target.value);
-    setCard({...card, front: event.target.value})
+    setCard({ ...card, front: event.target.value });
   };
 
   const handleBackChange = (event) => {
-    setCard({...card, back: event.target.value})
+    setCard({ ...card, back: event.target.value });
   };
 
   const handleSubmit = (event) => {

@@ -1,7 +1,7 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
-import DeleteButton from "../../Components/Buttons/DeleteButton";
-import EditButton from "../../Components/Buttons/EditButton";
+import DeleteButton from "../../chompponents/Buttons/DeleteButton";
+import EditButton from "../../chompponents/Buttons/EditButton";
 
 function CardListItem({ card, setDecks }) {
   const location = useLocation();

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { readDeck } from "../../utils/api";
 import NotEnoughCards from "./NotEnoughCards";
-import Breadcrumb from "../../Components/Breadcrumb";
+import Breadcrumb from "../../chompponents/Breadcrumb";
 
 function StudyCard({ cards }) {
   const [flipped, setFlipped] = useState(false);
@@ -33,23 +33,21 @@ function StudyCard({ cards }) {
 
   return (
     <div className="card">
-        <div className="card-body">
-          <h5 className="card-title">
-            Card {cards.indexOf(card) + 1} of {cards.length}
-          </h5>
-          <p className="card-text">
-            {flipped ? card.back : card.front}
-          </p>
-          <button onClick={flipHandler} className="btn btn-secondary">
-            Flip
+      <div className="card-body">
+        <h5 className="card-title">
+          Card {cards.indexOf(card) + 1} of {cards.length}
+        </h5>
+        <p className="card-text">{flipped ? card.back : card.front}</p>
+        <button onClick={flipHandler} className="btn btn-secondary">
+          Flip
+        </button>
+        {flipped && (
+          <button className="btn btn-primary" onClick={nextHandler}>
+            Next
           </button>
-          {flipped && (
-            <button className="btn btn-primary" onClick={nextHandler}>
-              Next
-            </button>
-          )}
-        </div>
+        )}
       </div>
+    </div>
   );
 }
 
