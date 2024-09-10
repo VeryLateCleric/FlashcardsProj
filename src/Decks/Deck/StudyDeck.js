@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import StudyCard from "./StudyCard";
 import { useParams } from "react-router-dom";
 import { readCard, readDeck } from "../../utils/api";
-import Breadcrumb from "../../Components/Breadcrumb";
+import Breadcrumb from "../../chompponents/Breadcrumb";
 import NotEnoughCards from "./NotEnoughCards";
 
 function StudyDeck() {

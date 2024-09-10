@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import CreateDeckButton from "../Components/Buttons/CreateDeckButton"; 
-import LoadingMessage from "../Components/LoadingMessage";
+import CreateDeckButton from "../chompponents/Buttons/CreateDeckButton";
+import LoadingMessage from "../chompponents/LoadingMessage";
 import DeckListItem from "./DeckListItem";
 
 function DeckList({ decks, setDecks }) {
