@@ -1,6 +1,6 @@
 import React from "react";
 
-function CardForm({ front, back, handleFrontChange, handleBackChange, handleSubmit, buttonText }) {
+function CardForm({ front, back, handleFrontChange, handleBackChange, handleSubmit }) {
   return (
     <form onSubmit={handleSubmit}>
       <div>
