@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Breadcrumb from "../../../Components/Breadcrumb";
 import LoadingMessage from "../../../Components/LoadingMessage";
+import CardForm from "./CardForm";
 import { createCard, listDecks } from "../../../utils/api";
 
 function NewCard({ deck, setDecks }) {
@@ -42,39 +43,17 @@ function NewCard({ deck, setDecks }) {
       });
   }
 
-  // // Create a new card (deckId, card, signal)
-  // async function addCard(deckId, card, signal) {
-  // const newCard = {
-  //   deckId,
-  //   front,
-  //   back
-  // };
-  // await createCard();
-
   return deck ? (
     <>
       <Breadcrumb navTitles={[deck.name, "Add Card"]} />
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="front">Front</label>
-          <textarea
-            id="front"
-            value={front}
-            onChange={handleFrontChange}
-            required
-          />
-        </div>
-        <div>
-          <label htmlFor="back">Back</label>
-          <textarea
-            id="back"
-            value={back}
-            onChange={handleBackChange}
-            required
-          />
-        </div>
-        <button type="submit">Create Card</button>
-      </form>
+      <CardForm
+        front={front}
+        back={back}
+        handleFrontChange={handleFrontChange}
+        handleBackChange={handleBackChange}
+        handleSubmit={handleSubmit}
+        buttonText="Create Card"
+      />
     </>
   ) : (
     <LoadingMessage />
