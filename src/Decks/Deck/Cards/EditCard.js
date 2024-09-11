@@ -10,8 +10,8 @@ function EditCard({ deck, setDecks }) {
   const navigate = useNavigate();
   
   // Set the initial state with details of existing cards
-  const [card, setCard] = useState(null);
-  // console.log("card", card);
+  const [card, setCard] = useState({});
+  
   useEffect(() => {
     // fetch card
     readCard(cardId).then(setCard);
