@@ -2,26 +2,22 @@ import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import Breadcrumb from "../../../Components/Breadcrumb";
 import LoadingMessage from "../../../Components/LoadingMessage";
-import { eventWrapper } from "@testing-library/user-event/dist/utils";
+import CardForm from "./CardForm";
 import { listDecks, readCard, updateCard } from "../../../utils/api";
 
 function EditCard({ deck, setDecks }) {
   const { cardId } = useParams();
   const navigate = useNavigate();
-  // const card = deck?.cards?.find((card) => card.id === Number(cardId));
-
+  
   // Set the initial state with details of existing cards
-  // const [front, setFront] = useState(card?.front || "");
-  // const [back, setBack] = useState(card?.back || "");
   const [card, setCard] = useState({});
-  console.log("card", card);
+  
   useEffect(() => {
     // fetch card
     readCard(cardId).then(setCard);
   }, [cardId]);
 
   const handleFrontChange = (event) => {
-    // setFront(event.target.value);
     setCard({ ...card, front: event.target.value });
   };
 
@@ -57,27 +53,14 @@ function EditCard({ deck, setDecks }) {
     <>
       <Breadcrumb navTitles={[deck.name, `Edit Card ${card.id}`]} />
       <h1 className="h1">Edit card</h1>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="front">Front</label>
-          <textarea
-            id="front"
-            value={card.front}
-            onChange={handleFrontChange}
-            required
-          />
-        </div>
-        <div>
-          <label htmlFor="back">Back</label>
-          <textarea
-            id="back"
-            value={card.back}
-            onChange={handleBackChange}
-            required
-          />
-        </div>
-        <button type="submit">Save</button>
-      </form>
+      <CardForm
+        front={card.front}
+        back={card.back}
+        handleFrontChange={handleFrontChange}
+        handleBackChange={handleBackChange}
+        handleSubmit={handleSubmit}
+        buttonText="Save"
+      />
     </>
   ) : (
     <LoadingMessage />
